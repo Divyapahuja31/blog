@@ -41,7 +41,6 @@ const About = () => {
           </p>
         </section>
 
-        {/* What Makes BlogVerse Unique */}
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4">🎨 What Makes BlogVerse Unique?</h2>
           <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
@@ -53,7 +52,6 @@ const About = () => {
           </ul>
         </section>
 
-        {/* Technologies */}
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4">🛠️ Technologies Used</h2>
           <p className="text-gray-700 dark:text-gray-300">
@@ -63,7 +61,7 @@ const About = () => {
           </p>
         </section>
 
-        {/* Creator Info */}
+
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4">👩‍💻 Meet the Creator</h2>
           <p className="text-gray-700 dark:text-gray-300">
@@ -71,7 +69,7 @@ const About = () => {
           </p>
         </section>
 
-        {/* Community */}
+  
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4">🤝 Join the Movement</h2>
           <p className="text-gray-700 dark:text-gray-300">
@@ -79,7 +77,7 @@ const About = () => {
           </p>
         </section>
 
-        {/* Call to Action */}
+  
         <section className="mt-10 text-center">
           <h3 className="text-2xl font-semibold mb-4">Ready to start your writing journey?</h3>
           <p className="mb-4 text-gray-700 dark:text-gray-300">Jump into the blog section, add your first entry, or explore what others have shared!</p>

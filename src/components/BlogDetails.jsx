@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { mockBlogs } from "../data/mockBlogs";
-import "../styles/blog.css";
+import  {dummyBlogs} from "../data/DummyBlogs";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const blog = mockBlogs.find((b) => b.id === parseInt(id));
+  const blog = dummyBlogs.find((b) => b.id === parseInt(id));
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -97,7 +96,6 @@ const BlogDetails = () => {
             </button>
           </div>
 
-          {/* Comments List */}
           <div className="space-y-6">
             {comments.map((comment, index) => (
               <div key={index} className="comment-card border-b pb-4 last:border-b-0 p-4 rounded-lg">
@@ -114,5 +112,4 @@ const BlogDetails = () => {
     </article>
   );
 };
-
 export default BlogDetails;

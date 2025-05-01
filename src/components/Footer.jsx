@@ -38,6 +38,7 @@ const Footer = () => {
           <p className="text-sm text-gray-400 mt-2">
             Crafted with ❤️ for curious minds.
           </p>
+          <p className='text-sm text-gray-400'>- DIVYA PAHUJA</p>
           <p className="text-sm text-gray-500 mt-2">
             &copy; {new Date().getFullYear()} BlogWorld. All rights reserved.
           </p>

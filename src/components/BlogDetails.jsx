@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import  {dummyBlogs} from "../data/DummyBlogs";
+import { dummyBlogs } from "../data/DummyBlogs";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -9,40 +9,46 @@ const BlogDetails = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
-  if (!blog) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h2 className="text-2xl font-serif text-red-500">Blog not found</h2>
-    </div>
-  );
+  if (!blog) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h2 className="text-2xl font-serif text-red-500">Blog not found</h2>
+      </div>
+    );
+  }
 
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
-      setComments([...comments, { text: newComment, author: "Anonymous", date: new Date().toLocaleDateString() }]);
+      const commentObj = {
+        text: newComment,
+        author: "Anonymous",
+        date: new Date().toLocaleDateString(),
+      };
+      setComments((prev) => [...prev, commentObj]);
       setNewComment("");
     }
   };
 
   return (
-    <article className="min-h-screen bg-gray-50 py-12 animate-fade-in">
+    <article className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-4">
-
-        <div className="blog-hero h-[400px] rounded-lg overflow-hidden mb-8">
-          <img 
-            src={blog.image} 
+        <div className="relative h-[400px] rounded-lg overflow-hidden mb-8">
+          <img
+            src={blog.image}
             alt={blog.title}
             className="w-full h-full object-cover"
           />
-          <div className="blog-hero-content absolute bottom-0 left-0 right-0 p-8 text-white">
-            <span className="category-tag mb-4 inline-block">
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8 text-white">
+            <span className="mb-4 inline-block uppercase text-sm tracking-wide">
               {blog.category}
             </span>
-            <h1 className="blog-title text-4xl font-serif font-bold mb-4">{blog.title}</h1>
-            <div className="flex items-center space-x-4">
+            <h1 className="text-4xl font-serif font-bold mb-2">{blog.title}</h1>
+            <div className="flex items-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
-                <img 
-                  src={blog.authorAvatar} 
-                  alt={blog.author} 
-                  className="author-avatar w-8 h-8 rounded-full"
+                <img
+                  src={blog.authorAvatar}
+                  alt={blog.author}
+                  className="w-8 h-8 rounded-full"
                 />
                 <span>{blog.author}</span>
               </div>
@@ -52,7 +58,6 @@ const BlogDetails = () => {
           </div>
         </div>
 
-    
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 leading-relaxed">{blog.content}</p>
@@ -61,26 +66,24 @@ const BlogDetails = () => {
 
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <div className="flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => setLikes(likes + 1)}
-              className="engagement-btn"
+              className="flex items-center space-x-1 text-blue-600 hover:underline"
             >
               <span>👍</span>
               <span>{likes}</span>
             </button>
-            <button className="engagement-btn">
+            <div className="flex items-center space-x-1 text-gray-600">
               <span>💬</span>
               <span>{comments.length}</span>
-            </button>
+            </div>
           </div>
         </div>
 
-
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h3 className="text-2xl font-serif font-bold mb-6">Comments</h3>
-          
 
-          <div className="mb-8">
+          <div className="mb-6">
             <textarea
               placeholder="Write a comment..."
               value={newComment}
@@ -88,9 +91,9 @@ const BlogDetails = () => {
               className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
               rows="3"
             />
-            <button 
+            <button
               onClick={handleAddComment}
-              className="btn-primary"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
               Post Comment
             </button>
@@ -98,12 +101,15 @@ const BlogDetails = () => {
 
           <div className="space-y-6">
             {comments.map((comment, index) => (
-              <div key={index} className="comment-card border-b pb-4 last:border-b-0 p-4 rounded-lg">
-                <div className="flex items-center space-x-2 mb-2">
-                  <span className="font-medium">{comment.author}</span>
-                  <span className="text-gray-500 text-sm">{comment.date}</span>
+              <div
+                key={index}
+                className="bg-gray-100 rounded p-4 border border-gray-200"
+              >
+                <div className="flex items-center space-x-2 mb-2 text-sm text-gray-600">
+                  <span className="font-semibold">{comment.author}</span>
+                  <span>{comment.date}</span>
                 </div>
-                <p className="text-gray-700">{comment.text}</p>
+                <p className="text-gray-800">{comment.text}</p>
               </div>
             ))}
           </div>
@@ -112,4 +118,5 @@ const BlogDetails = () => {
     </article>
   );
 };
+
 export default BlogDetails;

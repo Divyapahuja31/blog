@@ -11,7 +11,7 @@ const BlogDetails = () => {
 
   if (!blog) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
         <h2 className="text-2xl font-serif text-red-500">Blog not found</h2>
       </div>
     );
@@ -30,16 +30,17 @@ const BlogDetails = () => {
   };
 
   return (
-    <article className="min-h-screen bg-gray-50 py-12">
+    <article className="min-h-screen bg-gray-900 text-white py-12">
       <div className="max-w-4xl mx-auto px-4">
+        {/* Blog Image and Header */}
         <div className="relative h-[400px] rounded-lg overflow-hidden mb-8">
           <img
             src={blog.image}
             alt={blog.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
           />
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8 text-white">
-            <span className="mb-4 inline-block uppercase text-sm tracking-wide">
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-8">
+            <span className="mb-4 inline-block uppercase text-sm tracking-wide text-gray-300">
               {blog.category}
             </span>
             <h1 className="text-4xl font-serif font-bold mb-2">{blog.title}</h1>
@@ -58,29 +59,41 @@ const BlogDetails = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <div className="prose prose-lg max-w-none">
-            <p className="text-gray-700 leading-relaxed">{blog.content}</p>
+        {/* Blog Content */}
+        <div className="bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+          <div className="prose prose-lg max-w-none text-gray-300">
+            <p>{blog.content}</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <div className="flex items-center space-x-4">
+        {/* Like, Comment, and Share Buttons */}
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+          <div className="flex items-center space-x-6 text-sm">
             <button
               onClick={() => setLikes(likes + 1)}
-              className="flex items-center space-x-1 text-blue-600 hover:underline"
+              className="flex items-center space-x-2 text-blue-400 hover:text-blue-500 transition duration-200"
             >
-              <span>👍</span>
-              <span>{likes}</span>
+              <span role="img" aria-label="like">👍</span>
+              <span>{likes} Likes</span>
             </button>
-            <div className="flex items-center space-x-1 text-gray-600">
-              <span>💬</span>
-              <span>{comments.length}</span>
+
+            <div className="flex items-center space-x-2 text-gray-400">
+              <span role="img" aria-label="comment">💬</span>
+              <span>{comments.length} Comments</span>
             </div>
+
+            <button
+              onClick={() => navigator.clipboard.writeText(window.location.href)}
+              className="flex items-center space-x-2 text-green-400 hover:text-green-500 transition duration-200"
+            >
+              <span role="img" aria-label="share">🔗</span>
+              <span>Share</span>
+            </button>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        {/* Comment Section */}
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-2xl font-serif font-bold mb-6">Comments</h3>
 
           <div className="mb-6">
@@ -88,28 +101,29 @@ const BlogDetails = () => {
               placeholder="Write a comment..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+              className="w-full p-4 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-900 text-white mb-4"
               rows="3"
             />
             <button
               onClick={handleAddComment}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200"
             >
               Post Comment
             </button>
           </div>
 
+          {/* Display Comments */}
           <div className="space-y-6">
             {comments.map((comment, index) => (
               <div
                 key={index}
-                className="bg-gray-100 rounded p-4 border border-gray-200"
+                className="bg-gray-700 rounded p-4 border border-gray-600"
               >
-                <div className="flex items-center space-x-2 mb-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-2 mb-2 text-sm text-gray-400">
                   <span className="font-semibold">{comment.author}</span>
                   <span>{comment.date}</span>
                 </div>
-                <p className="text-gray-800">{comment.text}</p>
+                <p className="text-gray-300">{comment.text}</p>
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const BlogCard = ({ title, excerpt, image, author, date }) => {
+const BlogCard = ({ title, excerpt, image, author, date, id }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-xl">
       <img src={image} alt={title} className="w-full h-48 object-cover" />
@@ -11,8 +12,17 @@ const BlogCard = ({ title, excerpt, image, author, date }) => {
           <span>By {author}</span>
           <span>{date}</span>
         </div>
+        <div className="mt-3">
+          <Link
+            to={`/blog/${id}`}
+            className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
+          >
+            Read More &rarr;
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
+
 export default BlogCard;

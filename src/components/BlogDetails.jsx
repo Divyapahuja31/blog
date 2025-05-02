@@ -32,7 +32,6 @@ const BlogDetails = () => {
   return (
     <article className="min-h-screen bg-gray-900 text-white py-12">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Blog Image and Header */}
         <div className="relative h-[400px] rounded-lg overflow-hidden mb-8">
           <img
             src={blog.image}
@@ -59,14 +58,11 @@ const BlogDetails = () => {
           </div>
         </div>
 
-        {/* Blog Content */}
         <div className="bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
           <div className="prose prose-lg max-w-none text-gray-300">
             <p>{blog.content}</p>
           </div>
         </div>
-
-        {/* Like, Comment, and Share Buttons */}
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
           <div className="flex items-center space-x-6 text-sm">
             <button
@@ -91,8 +87,6 @@ const BlogDetails = () => {
             </button>
           </div>
         </div>
-
-        {/* Comment Section */}
         <div className="bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-2xl font-serif font-bold mb-6">Comments</h3>
 
@@ -112,7 +106,7 @@ const BlogDetails = () => {
             </button>
           </div>
 
-          {/* Display Comments */}
+
           <div className="space-y-6">
             {comments.map((comment, index) => (
               <div

@@ -67,7 +67,10 @@ npm install
 ```bash
 npm run dev
 ```
-Head over to http://localhost:5173 in your browser to start exploring the magic of BlogWorld!
+ 5️⃣ Head over to local host in your browser to start exploring the magic of BlogWorld!
+ ```bash
+ http://localhost:5173
+```
 ---
 
 ## 📝 How to Contribute
@@ -75,9 +78,9 @@ Head over to http://localhost:5173 in your browser to start exploring the magic 
 We’re always open to improvements! 💡 Whether you want to fix a bug, suggest an idea, or contribute a new feature, we’d love to have you join our community. Here’s how you can help:
 
 1. Fork the repository
-2. Create your own feature branch (git checkout -b feature/my-new-feature)
-3. Commit your changes (git commit -m 'Add some AmazingFeature')
-4. Push to the branch (git push origin feature/AmazingFeature)
+2. Create your own feature branch (`git checkout -b feature/my-new-feature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ---
@@ -94,6 +97,8 @@ This project is licensed under the MIT License. Feel free to fork, modify, and c
 
 ## 🙏 Acknowledgments
 A huge thank you to the open-source community for making amazing tools like React, Tailwind CSS, and Vite available to all developers.
+
+---
 
 -Made with ❤️ by Divya Pahuja
 
